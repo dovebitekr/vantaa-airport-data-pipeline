@@ -22,10 +22,10 @@ def fetch_and_save_flights():
         if response.status_code == 200:
             raw_data = response.json()
             
-            # 2. Data Processing: Add timestamp to the data
+            # 2:Data Processing: Add timestamp to the data
             raw_data['collected_at'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
-            # 3. Storage: Save the data as a JSON file
+            # 3:Storage: Save the data as a JSON file
             filename = "vantaa_flights.json"
             with open(filename, 'w', encoding='utf-8') as f:
                 json.dump(raw_data, f, indent=4)
@@ -37,7 +37,7 @@ def fetch_and_save_flights():
             print(f"API Error: Received status code {response.status_code}")
             
     except Exception as e:
-        print(f"Critical Error: {str(e)}")
+        print(f"Error: {str(e)}")
 
 if __name__ == "__main__":
     fetch_and_save_flights()
